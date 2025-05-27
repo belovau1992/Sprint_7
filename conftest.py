@@ -3,7 +3,7 @@ import requests
 import random
 import string
 
-from data import Url
+from .urls import Urls
 
 
 # метод регистрации нового курьера возвращает список из логина и пароля
@@ -54,6 +54,6 @@ def register_new_courier(register_new_courier_and_return_login_password):
     #Удаляем курьера после теста, предварительно проверив что данные есть
     if login and password:
         requests.delete(
-            f'{Url.BASE_URL}{Url.CREATE_COURIER_URL}',
+            f'{Urls.BASE_URL}{Urls.CREATE_COURIER_URL}',
             json={"login": login, "password": password}, timeout=5
         )
